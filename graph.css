@@ -3,16 +3,10 @@ body {
   margin: 0;
 }
 
-img {
-  height: 43px;
-  padding-left: 20px;
-  padding-right: 10px;
-  padding-top: 3px;
-}
 /**********************
-    NAVIGATION BAR
+    NAVIGATION BAR - not relevant anymore (Old)
 ***********************/
-.nav-bar ul {
+/*.nav-bar ul {
     list-style-type: none;
     width: 100%;
     height: 50px;
@@ -39,25 +33,48 @@ img {
 .nav-bar a:hover {
     background-color: #17202A;
 }
-
+*/
 
 /**********************
     SIDE BAR MENU
 ***********************/
 .side-bar {
-  background-color: #B7C6D6;
-  width: 250px;
-  min-height: calc(100vh - 50px);
+  background-color: #263445;
+  width: 400px;
+  /*min-height: calc(100vh - 50px); */
+  height: 40%;
   position: fixed;
   left: 0;
   bottom: 0;
 }
 
+.side-bar ul {
+  list-style-type: none;
+  margin-top: 2px;
+  padding: 5px;
+}
+.side-bar h1 {
+  float: right;
+  padding-right: 130px;
+  margin-top: 20px;
+  color: white;
+  font-family: "Candara";
+  font-size: 40px;
+}
 
+img {
+  height: 60px;
+  margin-top: 15px;
+  margin-bottom: 15px;
+  padding-left: 10px;
+}
 /**********************
         CANVAS
 ***********************/
 #canvas {
-  margin-top: 50px;
-  margin-left: 250px;
+  /*margin-top: 50px;*/
+/*margin-left: 300px;*/
+  background-color: #E1E8F1;
+  width:100%;
+  height:100%;
 }
