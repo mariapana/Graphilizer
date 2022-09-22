@@ -4,28 +4,36 @@
     <meta charset="utf-8">
     <title>Graphilizer</title>
     <link rel="stylesheet" href="graph.css">
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjs/0.15.0/math.min.js"></script>
+    <script src="http://cdnjs.cloudflare.com/ajax/libs/mathjs/0.15.0/math.min.js"></script>
   </head>
   <body>
+<!--
     <div class="nav-bar">
       <ul>
-        <li><img src="LOGO white.png" alt="Logo"></li>
+        <li><img src="C:\Programming Apps\Atom\Data Visualizer\LOGO white.png" alt="Logo"></li>
         <li><a href="#">Home</a></li>
         <li><a href="#">About</a></li>
         <li><a href="#">More</a></li>
         <li><a href="#">Contact</a></li>
       </ul>
     </div>
+-->
+
 
     <div class="side-bar">
-      <input type="text" placeholder="Insert your function here" id="expression">
-      <button type="button" name="button" onclick="drawGraph()">Submit</button>
-      <button type="button" name="button" onclick="zoomIn()">Zoom In</button>
-      <button type="button" name="button" onclick="zoomOut()">Zoom Out</button>
-      <button type="button" name="button" onclick="clearCanvas()">Clear</button>
+      <img src="LOGO white.png" alt="Logo">
+      <h1>Graphilizer</h1>
+      <ul>
+        <li><input id="expression" type="text" placeholder="Insert your function here"></li>
+        <li><input id="colorPicker" type = "text" placeholder="Insert graph HEX color code"></li>
+        <li><button type="button" name="button" onclick="drawGraph()">Submit</button></li>
+        <li><button type="button" name="button" onclick="zoomIn()">Zoom In</button></li>
+        <li><button type="button" name="button" onclick="zoomOut()">Zoom Out</button><li>
+        <li><button type="button" name="button" onclick="clearCanvas()">Clear</button></li>
+      </ul>
     </div>
 
-    <canvas id="canvas" width="1013" height="525"></canvas>
+    <canvas id="canvas" width="1280" height="569"></canvas>
 
     <script type="text/javascript" src="graph.js"></script>
   </body>
