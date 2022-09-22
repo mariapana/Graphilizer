@@ -2,11 +2,10 @@
 const canvas = document.getElementById("canvas");
 const ctx = canvas.getContext("2d");
 
-
     //n - the number of points used to define the curve => (n-1) straight line segments
 var n = 100000,
     //define the math "window" size
-    xMin = -2, xMax = 2, yMin = -2, yMax = 2,
+    xMin = -20, xMax = 20, yMin = -10, yMax = 10,
     //initialize math.js library
     math = mathjs(),
     //expr - input math expression as a string
@@ -17,17 +16,64 @@ var n = 100000,
     tree;
 
     ///Generating the coordinate axes
-function drawAxes() {
-  //Oy
+function drawOy() {
   ctx.beginPath();
   ctx.moveTo(canvas.width/2, 0);
   ctx.lineTo(canvas.width/2, canvas.height);
   ctx.stroke();
-  //Ox
+  ctx.closePath();
+}
+function drawOx(){
   ctx.beginPath();
   ctx.moveTo(0, canvas.height/2);
   ctx.lineTo(canvas.width, canvas.height/2);
   ctx.stroke();
+  ctx.closePath();
+}
+function drawOygrids(step) {
+  ctx.beginPath();
+  ctx.moveTo((canvas.width/2)-3, (canvas.height/2)+step);
+  ctx.lineTo((canvas.width/2)+3, (canvas.height/2)+step);
+  ctx.stroke();
+  ctx.beginPath();
+  ctx.moveTo((canvas.width/2)-3, (canvas.height/2)-step);
+  ctx.lineTo((canvas.width/2)+3, (canvas.height/2)-step);
+  ctx.stroke();
+}
+function drawOxgrids(step) {
+  ctx.beginPath();
+  ctx.moveTo((canvas.width/2)+step, (canvas.height/2)-3);
+  ctx.lineTo((canvas.width/2)+step, (canvas.height/2)+3);
+  ctx.stroke();
+  ctx.closePath();
+  ctx.beginPath();
+  ctx.moveTo((canvas.width/2)-step, (canvas.height/2)-3);
+  ctx.lineTo((canvas.width/2)-step, (canvas.height/2)+3);
+  ctx.stroke();
+  ctx.closePath();
+}
+function drawAxes() {
+  //Oy
+  drawOy();
+  //Oy grids - p is a counter
+  var unit = 30;
+  var p = 0, step = unit;
+  while(p*unit <= canvas.height/2)
+  {
+    drawOygrids(step);
+    p++;
+    step += unit;
+  }
+  //Ox
+  drawOx();
+  //Ox grids - p has the same purpose as in the Oy grid representation
+  p = 0, step = unit;
+  while(p*unit <= canvas.width/2)
+  {
+    drawOxgrids(step);
+    p++;
+    step += unit;
+  }
 }
 drawAxes();
 
@@ -61,7 +107,10 @@ function drawGraph() {
     ctx.lineTo(x,y);
   }
   ctx.lineWidth = 2;
+  color = document.getElementById("colorPicker").value;
+  ctx.strokeStyle = color;
   ctx.stroke();
+  ctx.closePath();
 }
 
 
@@ -76,14 +125,14 @@ function evalMathExp(mathX) {
 
   ///Button zoom functions
 function zoomIn() {
-  xMin++, xMax--, yMin++, yMax--;
+  xMin/=2, xMax/=2, yMin/=2, yMax/=2;
   ctx.clearRect(0, 0, canvas.width, canvas.height);
   drawAxes();
   drawGraph();
 }
 
 function zoomOut() {
-  xMin--, xMax++, yMin--, yMax++;
+  xMin*=2, xMax*=2, yMin*=2, yMax*=2;
   ctx.clearRect(0, 0, canvas.width, canvas.height);
   drawAxes();
   drawGraph();
